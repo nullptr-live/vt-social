@@ -111,7 +111,10 @@ ENV BIND="0.0.0.0"
 USER mastodon
 
 # Precompile assets
+# TODO(kaniini): Yarn install is invoked to allow us to pre-patch emoji-mart
+# we should set up a deviation instead.
 RUN cd ~ && \
+	yarn install && cp ./emoji_data/all.json ./node_modules/emoji-mart/data/all.json && \
 	OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder rails assets:precompile && \
 	yarn cache clean
 
