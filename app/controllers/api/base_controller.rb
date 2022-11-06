@@ -133,7 +133,13 @@ class Api::BaseController < ApplicationController
   end
 
   def disallow_unauthenticated_api_access?
-    authorized_fetch_mode?
+    if ENV['DISALLOW_UNAUTHENTICATED_API_ACCESS'] == 'true'
+      true
+    elsif ENV['DISALLOW_UNAUTHENTICATED_API_ACCESS'] == 'false'
+      false
+    else
+      authorized_fetch_mode?
+    end
   end
 
   private
