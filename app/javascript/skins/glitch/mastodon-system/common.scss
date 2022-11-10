@@ -1,0 +1,4 @@
+@import 'flavours/glitch/styles/mastodon';
+@media (prefers-color-scheme: light) {
+  @import 'flavours/glitch/styles/mastodon-light';
+}

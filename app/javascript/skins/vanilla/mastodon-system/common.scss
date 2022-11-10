@@ -1,0 +1,4 @@
+@import 'styles/mastodon';
+@media (prefers-color-scheme: light) {
+  @import 'styles/mastodon-light';
+}
