@@ -15,3 +15,4 @@ pipeline:
       - docker image push --all-tags gitea.treehouse.systems/treehouse/mastodon
     when:
       event: [push, tag]
+    secrets: [REGISTRY_SECRET]
