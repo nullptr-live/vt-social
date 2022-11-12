@@ -1,0 +1,20 @@
+pipeline:
+  login:
+    image: docker
+    commands:
+      - echo $REGISTRY_SECRET | docker login -u ariadne --password-stdin gitea.treehouse.systems
+    when:
+      event: [push, tag]
+    secrets: [REGISTRY_SECRET]
+
+  build:
+    image: docker
+    commands:
+      - docker image build -f Dockerfile . -t gitea.treehouse.systems/treehouse/mastodon:latest
+
+  push:
+    image: docker
+    commands:
+      - docker image push --all-tags gitea.treehouse.systems/treehouse/mastodon
+    when:
+      event: [push, tag]
