@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     /blocks
     /domain_blocks
     /mutes
+    /statuses/(*any)
   ).freeze
 
   root 'home#index'
@@ -73,7 +74,7 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users, path: 'auth', controllers: {
+  devise_for :users, path: 'auth', format: false, controllers: {
     omniauth_callbacks: 'auth/omniauth_callbacks',
     sessions:           'auth/sessions',
     registrations:      'auth/registrations',
@@ -218,7 +219,7 @@ Rails.application.routes.draw do
   resource :relationships, only: [:show, :update]
   resource :statuses_cleanup, controller: :statuses_cleanup, only: [:show, :update]
 
-  get '/media_proxy/:id/(*any)', to: 'media_proxy#show', as: :media_proxy
+  get '/media_proxy/:id/(*any)', to: 'media_proxy#show', as: :media_proxy, format: false
 
   resource :authorize_interaction, only: [:show, :create]
   resource :share, only: [:show, :create]
@@ -273,6 +274,7 @@ Rails.application.routes.draw do
       resource :about, only: [:show, :update], controller: 'about'
       resource :appearance, only: [:show, :update], controller: 'appearance'
       resource :discovery, only: [:show, :update], controller: 'discovery'
+      resource :other, only: [:show, :update], controller: 'other'
     end
 
     resources :site_uploads, only: [:destroy]
@@ -424,7 +426,7 @@ Rails.application.routes.draw do
 
   get '/admin', to: redirect('/admin/dashboard', status: 302)
 
-  namespace :api do
+  namespace :api, format: false do
     # OEmbed
     get '/oembed', to: 'oembed#show', as: :oembed
 
@@ -514,17 +516,9 @@ Rails.application.routes.draw do
       resources :bookmarks,    only: [:index]
       resources :reports,      only: [:create]
       resources :trends,       only: [:index], controller: 'trends/tags'
-      resources :filters,      only: [:index, :create, :show, :update, :destroy] do
-        resources :keywords, only: [:index, :create], controller: 'filters/keywords'
-        resources :statuses, only: [:index, :create], controller: 'filters/statuses'
-      end
+      resources :filters,      only: [:index, :create, :show, :update, :destroy]
       resources :endorsements, only: [:index]
       resources :markers,      only: [:index, :create]
-
-      namespace :filters do
-        resources :keywords, only: [:show, :update, :destroy]
-        resources :statuses, only: [:show, :destroy]
-      end
 
       namespace :apps do
         get :verify_credentials, to: 'credentials#show'
@@ -683,8 +677,16 @@ Rails.application.routes.draw do
 
       resources :media,       only: [:create]
       resources :suggestions, only: [:index]
-      resources :filters,     only: [:index, :create, :show, :update, :destroy]
       resource  :instance,    only: [:show]
+      resources :filters,     only: [:index, :create, :show, :update, :destroy] do
+        resources :keywords, only: [:index, :create], controller: 'filters/keywords'
+        resources :statuses, only: [:index, :create], controller: 'filters/statuses'
+      end
+
+      namespace :filters do
+        resources :keywords, only: [:show, :update, :destroy]
+        resources :statuses, only: [:show, :destroy]
+      end
 
       namespace :admin do
         resources :accounts, only: [:index]
@@ -706,7 +708,7 @@ Rails.application.routes.draw do
     get path, to: 'home#index'
   end
 
-  get '/web/(*any)', to: redirect('/%{any}', status: 302), as: :web, defaults: { any: '' }
+  get '/web/(*any)', to: redirect('/%{any}', status: 302), as: :web, defaults: { any: '' }, format: false
   get '/about',      to: 'about#show'
   get '/about/more', to: redirect('/about')
 

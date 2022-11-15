@@ -608,7 +608,7 @@ sv:
         other: "%{count} användare"
       categories:
         administration: Administration
-        devops: Devops
+        devops: DevOps
         invites: Inbjudningar
         moderation: Moderering
         special: Särskild
@@ -659,7 +659,7 @@ sv:
         view_audit_log_description: Tillåter användare att se historiken över administrativa åtgärder på servern
         view_dashboard: Visa instrumentpanel
         view_dashboard_description: Ger användare tillgång till instrumentpanelen och olika mätvärden
-        view_devops: Devops
+        view_devops: DevOps
         view_devops_description: Ger användare tillgång till instrumentpanelerna Sidekiq och pgHero
       title: Roller
     rules:
@@ -686,6 +686,7 @@ sv:
         title: Bibehållande av innehåll
       discovery:
         follow_recommendations: Följrekommendationer
+        preamble: Att visa intressant innehåll är avgörande i onboarding av nya användare som kanske inte känner någon på Mastodon. Styr hur olika upptäcktsfunktioner fungerar på din server.
         profile_directory: Profilkatalog
         public_timelines: Offentliga tidslinjer
         title: Upptäck
@@ -861,16 +862,22 @@ sv:
       body: "%{target} överklagade ett modereringsbeslut av typen %{type}, taget av %{action_taken_by} den %{date}. De skrev:"
       next_steps: Du kan godkänna överklagan för att ångra modereringsbeslutet, eller ignorera det.
       subject: "%{username} överklagar ett modereringsbeslut på %{instance}"
+    new_pending_account:
+      body: Detaljerna för det nya kontot finns nedan. Du kan godkänna eller avvisa denna ansökan.
+      subject: Nytt konto flaggat för granskning på %{instance} (%{username})
     new_report:
       body: "%{reporter} har rapporterat %{target}"
       body_remote: Någon från %{domain} har rapporterat %{target}
       subject: Ny rapport för %{instance} (#%{id})
     new_trends:
+      body: 'Följande objekt behöver granskas innan de kan visas publikt:'
       new_trending_links:
         title: Trendande länkar
       new_trending_statuses:
         title: Trendande inlägg
       new_trending_tags:
+        no_approved_tags: Det finns för närvarande inga godkända trendande hashtaggar.
+        requirements: 'Någon av dessa kandidater skulle kunna överträffa #%{rank} godkända trendande hashtaggar, som för närvarande är #%{lowest_tag_name} med en poäng på %{lowest_tag_score}.'
         title: Trendande hashtaggar
       subject: Nya trender tillgängliga för granskning på %{instance}
   aliases:
@@ -878,9 +885,11 @@ sv:
     created_msg: Ett nytt alias skapades. Du kan nu initiera flytten från det gamla kontot.
     deleted_msg: Aliaset togs bort. Att flytta från det kontot till detta kommer inte längre vara möjligt.
     empty: Du har inga alias.
+    hint_html: Om du vill flytta från ett annat konto till detta kan du skapa ett alias här, detta krävs innan du kan fortsätta med att flytta följare från det gamla kontot till detta. Denna åtgärd är <strong>ofarlig och kan ångras</strong>. <strong>Kontomigreringen initieras från det gamla kontot.</strong>.
     remove: Avlänka alias
   appearance:
     advanced_web_interface: Avancerat webbgränssnitt
+    advanced_web_interface_hint: 'Om du vill utnyttja hela skärmens bredd så kan du i det avancerade webbgränssnittet ställa in många olika kolumner för att se så mycket information samtidigt som du vill: Hem, notiser, federerad tidslinje, valfritt antal listor och hashtaggar.'
     animations_and_accessibility: Animationer och tillgänglighet
     confirmation_dialogs: Bekräftelsedialoger
     discovery: Upptäck
@@ -944,6 +953,7 @@ sv:
       title: Ställ in
     sign_up:
       preamble: Med ett konto på denna Mastodon-server kan du följa alla andra personer på nätverket, oavsett vilken server deras konto tillhör.
+      title: Låt oss få igång dig på %{domain}.
     status:
       account_status: Kontostatus
       confirming: Väntar på att e-postbekräftelsen ska slutföras.
@@ -1273,7 +1283,7 @@ sv:
     reblog:
       body: 'Ditt inlägg boostades av %{name}:'
       subject: "%{name} boostade ditt inlägg"
-      title: Ny boostning
+      title: Ny boost
     status:
       subject: "%{name} publicerade just ett inlägg"
     update:
@@ -1363,7 +1373,7 @@ sv:
     browser: Webbläsare
     browsers:
       alipay: Alipay
-      blackberry: Blackberry
+      blackberry: BlackBerry
       chrome: Chrome
       edge: Microsoft Edge
       electron: Electron
@@ -1377,7 +1387,7 @@ sv:
       phantom_js: PhantomJS
       qq: QQ browser
       safari: Safari
-      uc_browser: UCBrowser
+      uc_browser: UC Browser
       weibo: Weibo
     current_session: Nuvarande session
     description: "%{browser} på %{platform}"
@@ -1386,8 +1396,8 @@ sv:
     platforms:
       adobe_air: Adobe Air
       android: Android
-      blackberry: Blackberry
-      chrome_os: Chrome OS
+      blackberry: BlackBerry
+      chrome_os: ChromeOS
       firefox_os: Firefox OS
       ios: iOS
       linux: Linux
@@ -1479,9 +1489,9 @@ sv:
     exceptions: Undantag
     explanation: Eftersom inläggsradering är resursintensivt görs detta stegvis när servern inte är högbelastad. Därför kan det dröja innan dina inlägg raderas efter att de uppnått ålderströskeln.
     ignore_favs: Bortse från favoriter
-    ignore_reblogs: Ignorera boostningar
+    ignore_reblogs: Ignorera boostar
     interaction_exceptions: Undantag baserat på interaktioner
-    interaction_exceptions_explanation: Observera att det inte finns någon garanti att inlägg blir raderade om de går under favorit- eller boosttröskeln efter att en gång ha gått över dem.
+    interaction_exceptions_explanation: Observera att det inte finns någon garanti att inlägg blir raderade om de går under favorit- eller boost-tröskeln efter att en gång ha gått över dem.
     keep_direct: Behåll direktmeddelanden
     keep_direct_hint: Tar inte bort någon av dina direktmeddelanden
     keep_media: Behåll inlägg med mediebilagor
@@ -1507,7 +1517,7 @@ sv:
     min_favs: Behåll favoritmarkerade inlägg i minst
     min_favs_hint: Raderar inte något av dina inlägg som har blivit favoritmarkerat minst detta antal gånger. Lämna tomt för att radera inlägg oavsett antal favoritmarkeringar
     min_reblogs: Behåll boostade inlägg i minst
-    min_reblogs_hint: Raderar inte något av dina inlägg som har blivit boostat minst detta antal gånger. Lämna tomt för att radera inlägg oavsett antal boostningar
+    min_reblogs_hint: Raderar inte något av dina inlägg som har blivit boostat minst detta antal gånger. Lämna tomt för att radera inlägg oavsett antal boostar
   stream_entries:
     pinned: Fäst inlägg
     reblogged: boostad
