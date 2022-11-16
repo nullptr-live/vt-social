@@ -47,7 +47,7 @@ test:
 production:
   primary:
     <<: *default
-    database: <%= ENV['DB_NAME'] || 'mastodon_production' %>
+    database: <%= ENV['DB_NAME'] || 'mastodon' %>
     username: <%= ENV['DB_USER'] || 'mastodon' %>
     password: <%= (ENV['DB_PASS'] || '').to_json %>
     host: <%= ENV['DB_HOST'] || 'localhost' %>
