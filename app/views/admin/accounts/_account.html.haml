@@ -1,4 +1,4 @@
-.batch-table__row{ class: [!account.unavailable? && account.user_pending? && 'batch-table__row--attention',
+.batch-table__row{ class: [!account.unavailable? && account.user_pending? && !account.user_unconfirmed? && 'batch-table__row--attention',
                            (account.unavailable? || account.user_unconfirmed?) && 'batch-table__row--muted',
                            (account.previous_strikes_count.positive?) && 'batch-table__row--warn'] }
   %label.batch-table__row__select.batch-table__row__select--aligned.batch-checkbox
