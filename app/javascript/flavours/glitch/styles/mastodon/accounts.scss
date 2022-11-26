@@ -319,3 +319,25 @@
     color: var(--color-text-warning);
   }
 }
+
+.batch-table__row--warn {
+  color: var(--color-text-error);
+}
+
+.batch-table__row--warn .pending-account__header,
+.batch-table__row--warn .accounts-table,
+.batch-table__row--warn .name-tag {
+  &,
+  a,
+  strong {
+    color: var(--color-text-error);
+  }
+}
+
+.batch-table__row--warn .accounts-table {
+  tbody td.accounts-table__extra,
+  &__count,
+  &__count small {
+    color: var(--color-text-error);
+  }
+}
