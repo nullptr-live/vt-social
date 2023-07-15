@@ -61,7 +61,11 @@
                 wrapper: :with_block_label
 
   - if approved_registrations? && @invite.blank?
-    %p.lead= t('auth.sign_up.manual_review', domain: site_hostname)
+    %p.lead.signup-request
+      %strong Important:
+      Please read the instructions on the
+      %a{ href: '/about' } about
+      page and provide us with the information we need to approve your signup! We need links to your content and a verification post/mention to approve your account!
 
     .fields-group
       = f.simple_fields_for :invite_request, resource.invite_request || resource.build_invite_request do |invite_request_fields|
