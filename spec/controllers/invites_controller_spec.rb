@@ -56,6 +56,50 @@ describe InvitesController do
         expect(subject).to redirect_to invites_path
         expect(Invite.last).to have_attributes(user_id: user.id, max_uses: 10)
       end
+
+      # context 'when th_invite_limits_active?' do
+      #   let(:max_uses) { 25 }
+      #   let(:expires_in) { 86400 }
+
+      #   subject { post :create, params: { invite: { max_uses: "#{max_uses}", expires_in: expires_in } } }
+
+      #   before do
+      #     # expect_any_instance_of(Invite).to receive(:th_invite_limits_active?).and_return true
+      #     allow_any_instance_of(Invite).to receive(:th_invite_limits_active?).and_return true
+      #     # expect_any_instance_of(Invite).to receive(:created_by_moderator?).and_return false
+      #     allow_any_instance_of(Invite).to receive(:created_by_moderator?).and_return false
+      #   end
+
+      #   it do
+      #     expect(user.moderator).to be_falsy
+      #   end
+
+      #   shared_examples 'fails to create an invite' do
+      #     it 'fails to create an invite' do
+      #       expect { subject }.not_to change { Invite.count }
+      #     end
+      #   end
+
+      #   it 'succeeds to create a invite' do
+      #     expect { subject }.to change { Invite.count }.by(1)
+      #     expect(subject).to redirect_to invites_path
+      #     expect(Invite.last).to have_attributes(user_id: user.id, max_uses: max_uses)
+      #   end
+
+      #   context 'when the request is over the limits' do
+      #     context do
+      #       let(:max_uses) { 26 }
+
+      #       include_examples 'fails to create an invite'
+      #     end
+
+      #     context do
+      #       let(:expires_in) { 86401 }
+
+      #       include_examples 'fails to create an invite'
+      #     end
+      #   end
+      # end
     end
 
     context 'when not everyone can invite' do
