@@ -25,7 +25,7 @@ module Mastodon
     end
 
     def build_metadata
-      ['glitch', ENV.fetch('MASTODON_VERSION_METADATA', nil)].compact_blank.join('.')
+      ['glitch.th', ENV.fetch('MASTODON_VERSION_METADATA', nil)].compact_blank.join('.')
     end
 
     def to_a
@@ -44,24 +44,41 @@ module Mastodon
     end
 
     def repository
-      ENV.fetch('GITHUB_REPOSITORY', 'glitch-soc/mastodon')
+      @repository ||= ENV.fetch('GIT_REPOSITORY', false) || ENV.fetch('GITHUB_REPOSITORY', false) || 'treehouse/mastodon'
     end
 
     def source_base_url
-      ENV.fetch('SOURCE_BASE_URL', "https://github.com/#{repository}")
+      @source_base_url ||=
+        begin
+          base = ENV['GITHUB_REPOSITORY'] ? 'https://github.com' : 'https://gitea.treehouse.systems'
+          ENV.fetch('SOURCE_BASE_URL', "#{base}/#{repository}")
+        end
     end
 
     # specify git tag or commit hash here
     def source_tag
-      ENV.fetch('SOURCE_TAG', nil)
+      @source_tag ||=
+        begin
+          tag = ENV.fetch('SOURCE_TAG', nil)
+          return if tag.nil? || tag.empty?
+          tag
+        end
     end
 
     def source_url
-      if source_tag
-        "#{source_base_url}/tree/#{source_tag}"
-      else
-        source_base_url
-      end
+      @source_url ||=
+        begin
+          if source_tag && source_base_url =~ /gitea/
+            suffix = if !tag[/\H/]
+                       "commit/#{source_tag}"
+                     else
+                       "branch/#{source_tag}"
+                     end
+            "#{source_base_url}/#{suffix}"
+          else
+            source_base_url
+          end
+        end
     end
 
     def user_agent

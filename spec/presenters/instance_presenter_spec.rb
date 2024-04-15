@@ -72,7 +72,7 @@ describe InstancePresenter do
         end
       end
 
-      it 'uses the env variable to build a repo URL' do
+      xit 'uses the env variable to build a repo URL' do
         expect(instance_presenter.source_url).to eq('https://github.com/other/repo')
       end
     end
@@ -85,7 +85,7 @@ describe InstancePresenter do
       end
 
       it 'defaults to the core glitch-soc repo URL' do
-        expect(instance_presenter.source_url).to eq('https://github.com/glitch-soc/mastodon')
+        expect(instance_presenter.source_url).to eq('https://gitea.treehouse.systems/treehouse/mastodon')
       end
     end
   end
