@@ -1,7 +1,21 @@
+.compose-form {
+  .compose-form__modifiers {
+    .compose-form__upload {
+      &-description {
+        input {
+          &::placeholder {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
 .status__content a,
-.reply-indicator__content a,
-.edit-indicator__content a,
 .link-footer a,
+.quote-indicator__content a,
+.reply-indicator__content a,
 .status__content__read-more-button,
 .status__content__translate-button {
   text-decoration: underline;
@@ -29,9 +43,7 @@
   }
 }
 
-.status__content a,
-.reply-indicator__content a,
-.edit-indicator__content a {
+.status__content a {
   color: $highlight-text-color;
 }
 
@@ -39,8 +51,22 @@
   color: $darker-text-color;
 }
 
-.report-dialog-modal__textarea::placeholder {
+.compose-form__poll-wrapper .button.button-secondary,
+.compose-form .autosuggest-textarea__textarea::placeholder,
+.compose-form .spoiler-input__input::placeholder,
+.report-dialog-modal__textarea::placeholder,
+.language-dropdown__dropdown__results__item__common-name,
+.compose-form .icon-button {
   color: $inverted-text-color;
+}
+
+.text-icon-button.active {
+  color: $ui-highlight-color;
+}
+
+.language-dropdown__dropdown__results__item.active {
+  background: $ui-highlight-color;
+  font-weight: 500;
 }
 
 .link-button:disabled {
