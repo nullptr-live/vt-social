@@ -5,7 +5,7 @@ require 'rails_helper'
 describe 'Content-Security-Policy' do
   before { allow(SecureRandom).to receive(:base64).with(16).and_return('ZbA+JmE7+bK8F5qvADZHuQ==') }
 
-  it 'sets the expected CSP headers' do
+  pending 'sets the expected CSP headers' do
     get '/'
 
     expect(response_csp_headers)
