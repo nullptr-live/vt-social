@@ -1,10 +1,29 @@
 # frozen_string_literal: true
 
+require 'pathname'
+
 def setup_redis_env_url(prefix = nil, defaults = true)
   prefix = "#{prefix.to_s.upcase}_" unless prefix.nil?
   prefix = '' if prefix.nil?
+  redis_url_key = "#{prefix}REDIS_URL"
 
-  return if ENV["#{prefix}REDIS_URL"].present?
+  if ENV[redis_url_key].present?
+    conn = +ENV["#{prefix}REDIS_URL"].sub(/redis:\/\//i, '')
+
+    # Strip any prefixing `unix://`
+    unix = !conn.sub!(/^unix:\/\//i, '').nil?
+    # Strip any prefixing `./`
+    unix |= conn.sub!(/^(\.\/)+/, '')
+    unix |= conn.start_with?('/')
+
+    if unix
+      pn = Pathname.new(conn)
+      pn = Pathname.getwd / pn if pn.relative?
+      ENV[redis_url_key] = "unix://#{pn}"
+    end
+
+    return
+  end
 
   password = ENV.fetch("#{prefix}REDIS_PASSWORD") { '' if defaults }
   host     = ENV.fetch("#{prefix}REDIS_HOST") { 'localhost' if defaults }

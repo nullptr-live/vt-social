@@ -19,19 +19,29 @@ import { logger, httpLogger, initializeLogLevel, attachWebsocketHttpLogger, crea
 import { setupMetrics } from './metrics.js';
 import { isTruthy, normalizeHashtag, firstParam } from './utils.js';
 
-const environment = process.env.NODE_ENV || 'development';
+const environment = process.env.NODE_ENV !== 'development' ? 'production' : 'development';
 
 // Correctly detect and load .env or .env.production file based on environment:
-const dotenvFile = environment === 'production' ? '.env.production' : '.env';
-const dotenvFilePath = path.resolve(
-  url.fileURLToPath(
-    new URL(path.join('..', dotenvFile), import.meta.url)
-  )
-);
+const dotenvFile = environment === 'production' ? '.env.production' : '.env.development';
+const dotenvFileLocal = `${dotenvFile}.local`
 
-dotenv.config({
-  path: dotenvFilePath
+// Replicate dotenv-rails's behavior
+const projectDir = path.resolve(url.fileURLToPath(new URL('..', import.meta.url)))
+const dotenvFiles = ['.env', dotenvFile, '.env.local', dotenvFileLocal]
+  .map(s => path.join(projectDir, s));
+dotenvFiles.forEach(path => dotenv.config({path}));
+
+const subEnv = (s) => s.replaceAll(/\$\w+|\$\{\w+\}/g, (match) => {
+  const name = match.startsWith('${') ? match.slice(2, -1) : match.slice(1);
+  if (name === 'PWD') {
+    return projectDir;
+  }
+  return process.env[name];
 });
+
+if (process.env.REDIS_URL && process.env.PWD) {
+  process.env.REDIS_URL = process.env.REDIS_URL.replace(/\$PWD\b|$\{PWD\}/, projectDir);
+}
 
 initializeLogLevel(process.env, environment);
 
@@ -52,16 +62,29 @@ initializeLogLevel(process.env, environment);
  * @param {RedisConfiguration} config
  * @returns {Promise<Redis>}
  */
-const createRedisClient = async ({ redisParams, redisUrl }) => {
+const createRedisClient = async (config) => {
+  const { redisParams, redisUrl } = config;
+  const parsed = url.parse(redisUrl + '');
+
+  // so apparently ioredis doesn't handle relative paths
   let client;
-
-  if (typeof redisUrl === 'string') {
-    client = new Redis(redisUrl, redisParams);
-  } else {
+  if (!redisUrl) {
+    // @ts-ignore
     client = new Redis(redisParams);
+  } else if (parsed.host === null && parsed?.path?.[0] === '.') {
+    redisParams.path = parsed.path;
+    // @ts-ignore
+    client = new Redis(redisParams);
+  } else if (parsed.host === '.' || parsed.protocol === 'unix:' && parsed.host !== '') {
+    redisParams.path = redisUrl.host + redisUrl.path;
+    // @ts-ignore
+    client = new Redis(redisParams);
+  } else {
+    // @ts-ignore
+    client = new Redis(redisUrl, redisParams);;
   }
-
-  client.on('error', (err) => logger.error({ err }, 'Redis Client Error!'));
+  // @ts-ignore
+  client.on('error', (err) => logger.error(err, 'Redis Client Error!'));
 
   return client;
 };
@@ -122,7 +145,9 @@ const parseIntFromEnv = (value, defaultValue, variableName) => {
  * @returns {pg.PoolConfig} the configuration for the PostgreSQL connection
  */
 const pgConfigFromEnv = (env) => {
-  /** @type {Record<string, pg.PoolConfig>} */
+  if (env.DB_HOST) {
+    env.DB_HOST = subEnv(env.DB_HOST);
+  }
   const pgConfigs = {
     development: {
       user: env.DB_USER || pg.defaults.user,
@@ -260,7 +285,7 @@ const redisConfigFromEnv = (env) => {
   return {
     redisParams,
     redisPrefix,
-    redisUrl: typeof env.REDIS_URL === 'string' ? env.REDIS_URL : undefined,
+    redisUrl: env.REDIS_URL,
   };
 };
 
