@@ -212,6 +212,9 @@ group :development, :test do
 
   # RSpec runner for rails
   gem 'rspec-rails', '~> 6.0'
+
+  # foreman
+  gem 'foreman'
 end
 
 group :production do
