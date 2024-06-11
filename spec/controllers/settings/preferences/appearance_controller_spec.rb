@@ -23,11 +23,11 @@ describe Settings::Preferences::AppearanceController do
   end
 
   describe 'PUT #update' do
-    subject { put :update, params: { user: { settings_attributes: { theme: 'contrast' } } } }
+    subject { put :update, params: { user: { settings_attributes: { skin: 'contrast' } } } }
 
     it 'redirects correctly' do
       expect { subject }
-        .to change { user.reload.settings.theme }.to('contrast')
+        .to change { user.reload.settings.skin }.to('contrast')
 
       expect(response).to redirect_to(settings_preferences_appearance_path)
     end
