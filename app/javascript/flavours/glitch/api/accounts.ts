@@ -3,7 +3,5 @@ import type { ApiRelationshipJSON } from 'flavours/glitch/api_types/relationship
 
 export const apiSubmitAccountNote = (id: string, value: string) =>
   apiRequestPost<ApiRelationshipJSON>(`v1/accounts/${id}/note`, {
-    data: {
-      comment: value,
-    },
+    comment: value,
   });
