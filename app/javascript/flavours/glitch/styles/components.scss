@@ -1009,50 +1009,6 @@ body > [data-popper-placement] {
   }
 }
 
-.quote-indicator,
-.reply-indicator {
-  border-radius: 4px;
-  margin-bottom: 10px;
-  background: $ui-primary-color;
-  padding: 10px;
-  min-height: 23px;
-  overflow-y: auto;
-  flex: 0 2 auto;
-}
-
-.quote-indicator__header,
-.reply-indicator__header {
-  margin-bottom: 5px;
-  overflow: hidden;
-}
-
-.quote-indicator__cancel,
-.reply-indicator__cancel {
-  float: right;
-  line-height: 24px;
-}
-
-.quote-indicator__display-name,
-.reply-indicator__display-name {
-  color: $inverted-text-color;
-  display: block;
-  max-width: 100%;
-  line-height: 24px;
-  overflow: hidden;
-  text-decoration: none;
-
-  & > .display-name {
-    line-height: unset;
-    height: unset;
-  }
-}
-
-.quote-indicator__display-avatar,
-.reply-indicator__display-avatar {
-  float: left;
-  margin-inline-end: 5px;
-}
-
 .status__content--with-action {
   cursor: pointer;
 }
@@ -1160,7 +1116,9 @@ body > [data-popper-placement] {
   overflow: visible;
 }
 
-.reply-indicator {
+
+.reply-indicator,
+.quote-indicator {
   display: grid;
   grid-template-columns: 46px minmax(0, 1fr);
   grid-template-rows: 46px max-content;
@@ -1320,7 +1278,8 @@ body > [data-popper-placement] {
 }
 
 .edit-indicator__content,
-.reply-indicator__content {
+.reply-indicator__content,
+.quote-indicator__content {
   .emojione {
     width: 18px;
     height: 18px;
@@ -2326,9 +2285,7 @@ a .account__avatar {
   }
 }
 
-a.status__display-name,
-.quote-indicator__display-name,
-.reply-indicator__display-name,
+.status__display-name,
 .detailed-status__display-name,
 a.account__display-name {
   &:hover .display-name strong {
