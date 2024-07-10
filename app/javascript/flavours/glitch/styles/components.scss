@@ -1115,7 +1115,6 @@ body > [data-popper-placement] {
   overflow: visible;
 }
 
-
 .reply-indicator {
   display: grid;
   grid-template-columns: 46px minmax(0, 1fr);
@@ -1276,8 +1275,7 @@ body > [data-popper-placement] {
 }
 
 .edit-indicator__content,
-.reply-indicator__content,
-.quote-indicator__content {
+.reply-indicator__content {
   .emojione {
     width: 18px;
     height: 18px;
@@ -1422,7 +1420,6 @@ body > [data-popper-placement] {
 }
 
 .focusable {
-  &:hover,
   &:focus {
     outline: 0;
     background: rgba($ui-highlight-color, 0.05);
