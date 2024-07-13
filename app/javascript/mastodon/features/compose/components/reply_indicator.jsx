@@ -14,7 +14,7 @@ import { Icon } from 'mastodon/components/icon';
 export const ReplyIndicator = () => {
   const inReplyToId = useSelector(state => state.getIn(['compose', 'in_reply_to']));
   const quoteId = useSelector(state => state.getIn(['compose', 'quote_id']));
-  const status = useSelector(state => state.getIn(['statuses', inReplyToId || quote_id]));
+  const status = useSelector(state => state.getIn(['statuses', inReplyToId || quoteId]));
   const account = useSelector(state => state.getIn(['accounts', status?.get('account')]));
 
   if (!status) {
