@@ -442,7 +442,7 @@ class Status extends ImmutablePureComponent {
 
   handleHotkeyReply = e => {
     e.preventDefault();
-    this.props.onReply(this.props.status, this.props.history);
+    this.props.onReply(this.props.status);
   };
 
   handleHotkeyFavourite = (e) => {
@@ -459,7 +459,7 @@ class Status extends ImmutablePureComponent {
 
   handleHotkeyMention = e => {
     e.preventDefault();
-    this.props.onMention(this.props.status.get('account'), this.props.history);
+    this.props.onMention(this.props.status.get('account'));
   };
 
   handleHotkeyOpen = () => {
