@@ -169,6 +169,7 @@ namespace :api, format: false do
       collection do
         post :clear
         delete :destroy_multiple
+        get :unread_count
       end
 
       member do
@@ -338,6 +339,7 @@ namespace :api, format: false do
     resources :notifications, only: [:index, :show] do
       collection do
         post :clear
+        get :unread_count
       end
 
       member do
