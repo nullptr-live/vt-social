@@ -7906,7 +7906,7 @@ img.modal-warning {
   display: flex;
   flex-shrink: 0;
 
-  @media screen and (max-width: $no-gap-breakpoint) {
+  @media screen and (max-width: $no-gap-breakpoint - 1px) {
     border-right: 0;
     border-left: 0;
   }
