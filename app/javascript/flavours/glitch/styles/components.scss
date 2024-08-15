@@ -7924,9 +7924,18 @@ img.modal-warning {
 }
 
 .scrollable .account-card__title__avatar {
-  img,
+  img {
+    border: 2px solid var(--background-color);
+  }
+
   .account__avatar {
-    border-color: lighten($ui-base-color, 8%);
+    border: none;
+  }
+}
+
+.scrollable .account-card__header {
+  img {
+    border-radius: 4px;
   }
 }
 
