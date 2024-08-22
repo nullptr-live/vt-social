@@ -10895,7 +10895,7 @@ noscript {
     display: block;
     position: absolute;
     height: 100%;
-    background: url('../images/warning-stripes.svg') repeat-y;
+    background: url('~images/warning-stripes.svg') repeat-y;
     width: 5px;
     top: 0;
   }
@@ -10914,6 +10914,6 @@ noscript {
 
   &--filter::before,
   &--filter::after {
-    background-image: url('../images/filter-stripes.svg');
+    background-image: url('~images/filter-stripes.svg');
   }
 }
