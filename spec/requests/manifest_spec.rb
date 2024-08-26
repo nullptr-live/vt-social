@@ -15,7 +15,7 @@ describe 'Manifest' do
       expect(body_as_json)
         .to include(
           id: '/home',
-          name: 'Mastodon'
+          name: 'Mastodon Glitch Edition'
         )
     end
 
