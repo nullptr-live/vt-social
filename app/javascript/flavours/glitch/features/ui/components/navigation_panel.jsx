@@ -36,6 +36,7 @@ import { timelinePreview, trendsEnabled } from 'flavours/glitch/initial_state';
 import { transientSingleColumn } from 'flavours/glitch/is_mobile';
 import { canManageReports, canViewAdminDashboard } from 'flavours/glitch/permissions';
 import { selectUnreadNotificationGroupsCount } from 'flavours/glitch/selectors/notifications';
+import { selectUseGroupedNotifications } from 'flavours/glitch/selectors/settings';
 import { preferencesLink } from 'flavours/glitch/utils/backend_links';
 
 import ColumnLink from './column_link';
@@ -65,7 +66,7 @@ const messages = defineMessages({
 });
 
 const NotificationsLink = () => {
-  const optedInGroupedNotifications = useSelector((state) => state.getIn(['settings', 'notifications', 'groupingBeta'], false));
+  const optedInGroupedNotifications = useSelector(selectUseGroupedNotifications);
   const count = useSelector(state => state.getIn(['local_settings', 'notifications', 'tab_badge']) ? state.getIn(['notifications', 'unread']) : 0);
   const intl = useIntl();
 

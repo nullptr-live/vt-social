@@ -24,7 +24,8 @@ export const BoostModal: React.FC<{
   status: Status;
   onClose: () => void;
   onReblog: (status: Status, privacy: StatusVisibility) => void;
-}> = ({ status, onReblog, onClose }) => {
+  missingMediaDescription?: boolean;
+}> = ({ status, onReblog, onClose, missingMediaDescription }) => {
   const intl = useIntl();
 
   const defaultPrivacy = useAppSelector(
@@ -80,17 +81,24 @@ export const BoostModal: React.FC<{
               )}
             </h1>
             <div>
-              <FormattedMessage
-                id='boost_modal.combo'
-                defaultMessage='You can press {combo} to skip this next time'
-                values={{
-                  combo: (
-                    <span className='hotkey-combination'>
-                      <kbd>Shift</kbd>+<Icon id='retweet' icon={RepeatIcon} />
-                    </span>
-                  ),
-                }}
-              />
+              {missingMediaDescription ? (
+                <FormattedMessage
+                  id='boost_modal.missing_description'
+                  defaultMessage='This toot contains some media without description'
+                />
+              ) : (
+                <FormattedMessage
+                  id='boost_modal.combo'
+                  defaultMessage='You can press {combo} to skip this next time'
+                  values={{
+                    combo: (
+                      <span className='hotkey-combination'>
+                        <kbd>Shift</kbd>+<Icon id='retweet' icon={RepeatIcon} />
+                      </span>
+                    ),
+                  }}
+                />
+              )}
             </div>
           </div>
         </div>
