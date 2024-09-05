@@ -9055,22 +9055,6 @@ noscript {
       margin: 0;
     }
   }
-
-  &--unread {
-    background: lighten($ui-base-color, 2%);
-
-    &:focus {
-      background: lighten($ui-base-color, 4%);
-    }
-
-    .conversation__content__info {
-      font-weight: 700;
-    }
-
-    .conversation__content__relative-time {
-      color: $primary-text-color;
-    }
-  }
 }
 
 .announcements {
@@ -9265,7 +9249,8 @@ noscript {
 }
 
 .notification,
-.status__wrapper {
+.status__wrapper,
+.conversation {
   position: relative;
 
   &.unread {
