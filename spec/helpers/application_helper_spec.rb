@@ -10,7 +10,8 @@ RSpec.describe ApplicationHelper do
       it 'uses the controller body classes in the result' do
         expect(helper.body_classes)
           .to match(/modal-layout compose-standalone/)
-          .and match(/theme-default/)
+          .and match(/flavour-glitch/)
+          .and match(/skin-default/)
       end
 
       it 'includes values set via content_for' do
