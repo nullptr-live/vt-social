@@ -4098,7 +4098,7 @@ input.glitch-setting-text {
 
   &__wrapper {
     background: $white;
-    border: 1px solid $ui-secondary-color;
+    border: 1px solid var(--background-border-color);
     margin-bottom: 10px;
     border-radius: 4px;
 
@@ -6747,9 +6747,10 @@ a.status-card {
 .report-modal,
 .actions-modal,
 .compare-history-modal {
-  background: lighten($ui-secondary-color, 8%);
-  color: $inverted-text-color;
-  border-radius: 8px;
+  background: var(--background-color);
+  color: $primary-text-color;
+  border-radius: 4px;
+  border: 1px solid var(--background-border-color);
   overflow: hidden;
   max-width: 90vw;
   width: 480px;
@@ -6806,6 +6807,7 @@ a.status-card {
 .report-modal {
   width: 90vw;
   max-width: 700px;
+  border: 1px solid var(--background-border-color);
 }
 
 .report-dialog-modal {
@@ -7029,7 +7031,7 @@ a.status-card {
 
 .report-modal__container {
   display: flex;
-  border-top: 1px solid $ui-secondary-color;
+  border-top: 1px solid var(--background-border-color);
 
   @media screen and (width <= 480px) {
     flex-wrap: wrap;
@@ -7087,7 +7089,7 @@ a.status-card {
 
 .report-modal__comment {
   padding: 20px;
-  border-inline-end: 1px solid $ui-secondary-color;
+  border-inline-end: 1px solid var(--background-border-color);
   max-width: 320px;
 
   p {
@@ -7098,7 +7100,7 @@ a.status-card {
 
   .setting-text-label {
     display: block;
-    color: $inverted-text-color;
+    color: $secondary-text-color;
     font-size: 14px;
     font-weight: 500;
     margin-bottom: 10px;
