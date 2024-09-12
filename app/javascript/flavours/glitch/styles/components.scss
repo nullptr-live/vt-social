@@ -6812,17 +6812,10 @@ a.status-card {
   position: relative;
   flex-direction: column;
 
-  .status__relative-time {
-    order: 2;
+  @media screen and (max-width: $no-columns-breakpoint) {
+    border-bottom: 0;
+    border-radius: 4px 4px 0 0;
   }
-
-  .status__content__spoiler-link {
-    color: lighten($secondary-text-color, 8%);
-  }
-}
-
-.boost-modal .status-direct {
-  background-color: inherit;
 }
 
 .boost-modal__container {
@@ -7221,7 +7214,7 @@ a.status-card {
 
     li:not(:empty) {
       a {
-        color: $inverted-text-color;
+        color: $primary-text-color;
         display: flex;
         padding: 12px 16px;
         font-size: 15px;
@@ -7314,7 +7307,7 @@ a.status-card {
 
 .compare-history-modal {
   .report-modal__target {
-    border-bottom: 1px solid $ui-secondary-color;
+    border-bottom: 1px solid var(--background-border-color);
   }
 
   &__container {
@@ -7324,7 +7317,7 @@ a.status-card {
   }
 
   .status__content {
-    color: $inverted-text-color;
+    color: $secondary-text-color;
     font-size: 19px;
     line-height: 24px;
 
