@@ -7,7 +7,6 @@ tr:
     hosted_on: Mastodon %{domain} üzerinde barındırılıyor
     title: Hakkında
   accounts:
-    follow: Takip et
     followers:
       one: Takipçi
       other: Takipçiler
@@ -25,7 +24,7 @@ tr:
   admin:
     account_actions:
       action: Eylemi gerçekleştir
-      already_silenced: Bu hesap zaten askıya alınmış.
+      already_silenced: Bu hesap zaten sınırlanmış.
       already_suspended: Bu hesap zaten askıya alınmış.
       title: "%{acct} üzerinde denetleme eylemi gerçekleştir"
     account_moderation_notes:
@@ -1161,6 +1160,12 @@ tr:
       view_strikes: Hesabınıza yönelik eski eylemleri görüntüleyin
     too_fast: Form çok hızlı gönderildi, tekrar deneyin.
     use_security_key: Güvenlik anahtarını kullan
+  author_attribution:
+    example_title: Örnek metin
+    hint_html: Mastodon'da bağlantılar paylaşıldığında nasıl tanınmak istediğinizi denetleyin.
+    more_from_html: "%{name} kişisinden daha fazlası"
+    s_blog: "%{name} kişisinin Günlüğü"
+    title: Yazar atıfı
   challenge:
     confirm: Devam et
     hint_html: "<strong>İpucu:</strong> Önümüzdeki saat boyunca sana parolanı sormayacağız."
@@ -1734,23 +1739,12 @@ tr:
     edited_at_html: "%{date} tarihinde düzenlendi"
     errors:
       in_reply_not_found: Yanıtlamaya çalıştığınız durum yok gibi görünüyor.
-    open_in_web: Web sayfasında aç
     over_character_limit: "%{max} karakter limiti aşıldı"
     pin_errors:
       direct: Sadece değinilen kullanıcıların görebileceği gönderiler üstte tutulamaz
       limit: Halihazırda maksimum sayıda gönderi sabitlediniz
       ownership: Başkasının gönderisi sabitlenemez
       reblog: Bir gönderi sabitlenemez
-    poll:
-      total_people:
-        one: "%{count} kişi"
-        other: "%{count} kişiler"
-      total_votes:
-        one: "%{count} oy"
-        other: "%{count} oylar"
-      vote: Oy Ver
-    show_more: Daha fazlasını göster
-    show_thread: Konuyu göster
     title: '%{name}: "%{quote}"'
     visibilities:
       direct: Doğrudan
@@ -1949,6 +1943,7 @@ tr:
     instructions_html: Aşağıdaki kodu kopyalayın ve websitenizin HTML'sine yapıştırın. Daha sonra "Profil Düzenle" sekmesini kullanarak profilinizdeki ek sahalardan birine websitenizin adresini ekleyin ve değişiklikleri kaydedin.
     verification: Doğrulama
     verified_links: Doğrulanmış bağlantılarınız
+    website_verification: Website doğrulama
   webauthn_credentials:
     add: Yeni güvenlik anahtarı ekle
     create:

@@ -7,7 +7,6 @@ gl:
     hosted_on: Mastodon aloxado en %{domain}
     title: Sobre
   accounts:
-    follow: Seguir
     followers:
       one: Seguidora
       other: Seguidoras
@@ -1161,6 +1160,12 @@ gl:
       view_strikes: Ver avisos anteriores respecto da túa conta
     too_fast: Formulario enviado demasiado rápido, inténtao outra vez.
     use_security_key: Usa chave de seguridade
+  author_attribution:
+    example_title: Texto de mostra
+    hint_html: Controla o xeito en que te acreditan cando se comparten ligazóns en Mastodon.
+    more_from_html: Máis de %{name}
+    s_blog: Blog de %{name}
+    title: Atribución da autoría
   challenge:
     confirm: Continuar
     hint_html: "<strong>Nota:</strong> Non che pediremos o contrasinal na seguinte hora."
@@ -1734,23 +1739,12 @@ gl:
     edited_at_html: Editado %{date}
     errors:
       in_reply_not_found: A publicación á que tentas responder semella que non existe.
-    open_in_web: Abrir na web
     over_character_limit: Excedeu o límite de caracteres %{max}
     pin_errors:
       direct: As publicacións que só son visibles para as usuarias mencionadas non se poden fixar
       limit: Xa fixaches o número máximo permitido de publicacións
       ownership: Non podes fixar a publicación doutra usuaria
       reblog: Non se poden fixar as mensaxes promovidas
-    poll:
-      total_people:
-        one: "%{count} persoa"
-        other: "%{count} persoas"
-      total_votes:
-        one: "%{count} voto"
-        other: "%{count} votos"
-      vote: Votar
-    show_more: Mostrar máis
-    show_thread: Amosar fío
     title: '%{name}: "%{quote}"'
     visibilities:
       direct: Directa
@@ -1949,6 +1943,7 @@ gl:
     instructions_html: Copia e pega o código inferior no HTML do teu sitio web. Despois engade o enderezo da túa web nun dos campos de datos extra do teu perfil dispoñibles na lapela "Editar perfil" e garda os cambios.
     verification: Validación
     verified_links: As túas ligazóns verificadas
+    website_verification: Verificación do sitio web
   webauthn_credentials:
     add: Engadir nova chave de seguridade
     create:
