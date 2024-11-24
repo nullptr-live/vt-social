@@ -46,10 +46,6 @@ export function Lists () {
   return import(/* webpackChunkName: "flavours/glitch/async/lists" */'../../lists');
 }
 
-export function PinnedAccountsEditor () {
-  return import(/* webpackChunkName: "flavours/glitch/async/pinned_accounts_editor" */'../../pinned_accounts_editor');
-}
-
 export function DirectTimeline() {
   return import(/* webpackChunkName: "flavours/glitch/async/direct_timeline" */'../../direct_timeline');
 }

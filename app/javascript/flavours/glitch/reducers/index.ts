@@ -30,7 +30,6 @@ import { notificationPolicyReducer } from './notification_policy';
 import { notificationRequestsReducer } from './notification_requests';
 import notifications from './notifications';
 import { pictureInPictureReducer } from './picture_in_picture';
-import pinnedAccountsEditor from './pinned_accounts_editor';
 import polls from './polls';
 import push_notifications from './push_notifications';
 import { relationshipsReducer } from './relationships';
@@ -78,7 +77,6 @@ const reducers = {
   filters,
   conversations,
   suggestions,
-  pinnedAccountsEditor,
   polls,
   trends,
   markers: markersReducer,
