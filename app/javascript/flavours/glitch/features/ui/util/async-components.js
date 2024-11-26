@@ -166,8 +166,12 @@ export function Directory () {
   return import(/* webpackChunkName: "features/glitch/async/directory" */'../../directory');
 }
 
-export function Onboarding () {
-  return import(/* webpackChunkName: "features/glitch/async/onboarding" */'../../onboarding');
+export function OnboardingProfile () {
+  return import(/* webpackChunkName: "features/glitch/async/onboarding" */'../../onboarding/profile');
+}
+
+export function OnboardingFollows () {
+  return import(/* webpackChunkName: "features/glitch/async/onboarding" */'../../onboarding/follows');
 }
 
 export function CompareHistoryModal () {
