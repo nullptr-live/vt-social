@@ -14,7 +14,7 @@ import { fetchSuggestions } from 'flavours/glitch/actions/suggestions';
 import { markAsPartial } from 'flavours/glitch/actions/timelines';
 import { apiRequest } from 'flavours/glitch/api';
 import type { ApiAccountJSON } from 'flavours/glitch/api_types/accounts';
-import Column from 'flavours/glitch/components/column';
+import { Column } from 'flavours/glitch/components/column';
 import { ColumnHeader } from 'flavours/glitch/components/column_header';
 import { ColumnSearchHeader } from 'flavours/glitch/components/column_search_header';
 import ScrollableList from 'flavours/glitch/components/scrollable_list';

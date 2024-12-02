@@ -20,7 +20,7 @@ import {
 import type { ApiAccountJSON } from 'flavours/glitch/api_types/accounts';
 import { Avatar } from 'flavours/glitch/components/avatar';
 import { Button } from 'flavours/glitch/components/button';
-import Column from 'flavours/glitch/components/column';
+import { Column } from 'flavours/glitch/components/column';
 import { ColumnHeader } from 'flavours/glitch/components/column_header';
 import { ColumnSearchHeader } from 'flavours/glitch/components/column_search_header';
 import { FollowersCounter } from 'flavours/glitch/components/counters';
