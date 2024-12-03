@@ -8,10 +8,10 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { fetchServer } from 'flavours/glitch/actions/server';
+import { Account } from 'flavours/glitch/components/account';
 import { ServerHeroImage } from 'flavours/glitch/components/server_hero_image';
 import { ShortNumber } from 'flavours/glitch/components/short_number';
 import { Skeleton } from 'flavours/glitch/components/skeleton';
-import Account from 'flavours/glitch/containers/account_container';
 import { domain } from 'flavours/glitch/initial_state';
 
 const messages = defineMessages({
