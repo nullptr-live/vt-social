@@ -9059,10 +9059,10 @@ noscript {
 }
 
 .explore__search-header {
-  background: darken($ui-base-color, 4%);
   justify-content: center;
   align-items: center;
-  padding: 15px;
+  padding: 16px;
+  padding-bottom: 8px;
 
   .search {
     width: 100%;
@@ -9071,7 +9071,7 @@ noscript {
 
   .search__input {
     border: 1px solid var(--background-border-color);
-    padding: 10px;
+    padding: 12px;
     padding-inline-end: 30px;
   }
 
@@ -9080,8 +9080,8 @@ noscript {
   }
 
   .search .icon {
-    top: 9px;
-    inset-inline-end: 10px;
+    top: 12px;
+    inset-inline-end: 12px;
     color: $dark-text-color;
   }
 }
