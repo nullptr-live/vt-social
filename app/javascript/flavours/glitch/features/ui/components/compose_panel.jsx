@@ -7,9 +7,8 @@ import { mountCompose, unmountCompose } from 'flavours/glitch/actions/compose';
 import ServerBanner from 'flavours/glitch/components/server_banner';
 import ComposeFormContainer from 'flavours/glitch/features/compose/containers/compose_form_container';
 import SearchContainer from 'flavours/glitch/features/compose/containers/search_container';
+import { LinkFooter } from 'flavours/glitch/features/ui/components/link_footer';
 import { identityContextPropShape, withIdentity } from 'flavours/glitch/identity_context';
-
-import LinkFooter from './link_footer';
 
 class ComposePanel extends PureComponent {
   static propTypes = {

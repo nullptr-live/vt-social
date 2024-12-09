@@ -206,6 +206,10 @@ export function PrivacyPolicy () {
   return import(/*webpackChunkName: "features/glitch/async/privacy_policy" */'../../privacy_policy');
 }
 
+export function TermsOfService () {
+  return import(/*webpackChunkName: "features/glitch/async/terms_of_service" */'../../terms_of_service');
+}
+
 export function NotificationRequests () {
   return import(/*webpackChunkName: "features/glitch/notifications/requests" */'../../notifications/requests');
 }

@@ -18,7 +18,7 @@ import Column from 'flavours/glitch/components/column';
 import { Icon  }  from 'flavours/glitch/components/icon';
 import { ServerHeroImage } from 'flavours/glitch/components/server_hero_image';
 import { Skeleton } from 'flavours/glitch/components/skeleton';
-import LinkFooter from 'flavours/glitch/features/ui/components/link_footer';
+import { LinkFooter} from 'flavours/glitch/features/ui/components/link_footer';
 
 const messages = defineMessages({
   title: { id: 'column.about', defaultMessage: 'About' },
