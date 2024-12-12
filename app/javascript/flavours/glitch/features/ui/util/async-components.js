@@ -182,6 +182,10 @@ export function Explore () {
   return import(/* webpackChunkName: "flavours/glitch/async/explore" */'../../explore');
 }
 
+export function Search () {
+  return import(/* webpackChunkName: "features/glitch/async/explore" */'../../search');
+}
+
 export function FilterModal () {
   return import(/*webpackChunkName: "flavours/glitch/async/filter_modal" */'../components/filter_modal');
 }

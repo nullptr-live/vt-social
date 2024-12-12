@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 
 import { mountCompose, unmountCompose } from 'flavours/glitch/actions/compose';
 import ServerBanner from 'flavours/glitch/components/server_banner';
+import { Search } from 'flavours/glitch/features/compose/components/search';
 import ComposeFormContainer from 'flavours/glitch/features/compose/containers/compose_form_container';
-import SearchContainer from 'flavours/glitch/features/compose/containers/search_container';
 import { LinkFooter } from 'flavours/glitch/features/ui/components/link_footer';
 import { identityContextPropShape, withIdentity } from 'flavours/glitch/identity_context';
 
@@ -31,7 +31,7 @@ class ComposePanel extends PureComponent {
 
     return (
       <div className='compose-panel'>
-        <SearchContainer openInRoute />
+        <Search openInRoute />
 
         {!signedIn && (
           <>
