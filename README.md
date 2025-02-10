@@ -148,6 +148,18 @@ development environment configured with the software needed for this project.
 - Wait for an _Open in Browser_ prompt. This will open Mastodon
 - On the _Ports_ tab "stream" setting change _Port visibility_ → _Public_
 
+## 🌏  Open in other Cloud IDEs
+
+Click any of the buttons below to start a new development environment to demo or contribute to the codebase without having to install anything on your machine:
+
+[![Open in VS Code](https://img.shields.io/badge/Open%20in-VS%20Code-blue?logo=visualstudiocode)](https://vscode.dev/github/mastodon/mastodon)
+[![Open in Glitch](https://img.shields.io/badge/Open%20in-Glitch-blue?logo=glitch)](https://glitch.com/edit/#!/import/github/mastodon/mastodon)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mastodon/mastodon)
+[![Edit in Codesandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mastodon/mastodon)
+[![Open in Repl.it](https://replit.com/badge/github/withastro/astro)](https://replit.com/github/mastodon/mastodon)
+[![Open in Codeanywhere](https://codeanywhere.com/img/open-in-codeanywhere-btn.svg)](https://app.codeanywhere.com/#https://github.com/mastodon/mastodon)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/mastodon/mastodon)
+
 ## Contributing
 
 Mastodon is **free, open-source software** licensed under **AGPLv3**.
