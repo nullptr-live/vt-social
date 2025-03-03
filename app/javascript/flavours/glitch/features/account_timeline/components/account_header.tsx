@@ -62,8 +62,8 @@ import { useAppSelector, useAppDispatch } from 'flavours/glitch/store';
 
 import { ActionBar } from '../../account/components/action_bar';
 
-import MemorialNote from './memorial_note';
-import MovedNote from './moved_note';
+import { MemorialNote } from './memorial_note';
+import { MovedNote } from './moved_note';
 
 const messages = defineMessages({
   unfollow: { id: 'account.unfollow', defaultMessage: 'Unfollow' },
@@ -846,7 +846,7 @@ export const AccountHeader: React.FC<{
     <div className='account-timeline__header'>
       {!hidden && account.memorial && <MemorialNote />}
       {!hidden && account.moved && (
-        <MovedNote from={account} to={account.moved} />
+        <MovedNote accountId={account.id} targetAccountId={account.moved} />
       )}
 
       <div
