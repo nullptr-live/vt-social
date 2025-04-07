@@ -5613,6 +5613,9 @@ a.status-card {
 
     &__results {
       &__item {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
         cursor: pointer;
         color: $primary-text-color;
         font-size: 14px;
@@ -6619,7 +6622,7 @@ a.status-card {
 
     a {
       text-decoration: none;
-      color: $inverted-text-color;
+      color: $highlight-text-color;
       font-weight: 500;
 
       &:hover {
