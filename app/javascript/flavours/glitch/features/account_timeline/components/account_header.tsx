@@ -18,6 +18,7 @@ import {
   unmuteAccount,
   pinAccount,
   unpinAccount,
+  removeAccountFromFollowers,
 } from 'flavours/glitch/actions/accounts';
 import { initBlockModal } from 'flavours/glitch/actions/blocks';
 import { mentionCompose, directCompose } from 'flavours/glitch/actions/compose';
@@ -155,6 +156,23 @@ const messages = defineMessages({
   openOriginalPage: {
     id: 'account.open_original_page',
     defaultMessage: 'Open original page',
+  },
+  removeFromFollowers: {
+    id: 'account.remove_from_followers',
+    defaultMessage: 'Remove {name} from followers',
+  },
+  confirmRemoveFromFollowersTitle: {
+    id: 'confirmations.remove_from_followers.title',
+    defaultMessage: 'Remove follower?',
+  },
+  confirmRemoveFromFollowersMessage: {
+    id: 'confirmations.remove_from_followers.message',
+    defaultMessage:
+      '{name} will stop following you. Are you sure you want to proceed?',
+  },
+  confirmRemoveFromFollowersButton: {
+    id: 'confirmations.remove_from_followers.confirm',
+    defaultMessage: 'Remove follower',
   },
 });
 
@@ -498,6 +516,39 @@ export const AccountHeader: React.FC<{
         arr.push(null);
       }
 
+      if (relationship?.followed_by) {
+        const handleRemoveFromFollowers = () => {
+          dispatch(
+            openModal({
+              modalType: 'CONFIRM',
+              modalProps: {
+                title: intl.formatMessage(
+                  messages.confirmRemoveFromFollowersTitle,
+                ),
+                message: intl.formatMessage(
+                  messages.confirmRemoveFromFollowersMessage,
+                  { name: <strong>{account.acct}</strong> },
+                ),
+                confirm: intl.formatMessage(
+                  messages.confirmRemoveFromFollowersButton,
+                ),
+                onConfirm: () => {
+                  void dispatch(removeAccountFromFollowers({ accountId }));
+                },
+              },
+            }),
+          );
+        };
+
+        arr.push({
+          text: intl.formatMessage(messages.removeFromFollowers, {
+            name: account.username,
+          }),
+          action: handleRemoveFromFollowers,
+          dangerous: true,
+        });
+      }
+
       if (relationship?.muting) {
         arr.push({
           text: intl.formatMessage(messages.unmute, {
@@ -596,6 +647,8 @@ export const AccountHeader: React.FC<{
 
     return arr;
   }, [
+    dispatch,
+    accountId,
     account,
     relationship,
     permissions,
