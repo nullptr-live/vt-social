@@ -10708,6 +10708,10 @@ noscript {
       bdi {
         color: $darker-text-color;
       }
+
+      .account__avatar {
+        flex: 0 0 auto;
+      }
     }
 
     /* glitch: used for CWs */
