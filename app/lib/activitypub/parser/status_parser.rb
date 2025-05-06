@@ -97,11 +97,11 @@ class ActivityPub::Parser::StatusParser
   end
 
   def favourites_count
-    @object.dig('likes', 'totalItems')
+    @object['likes']['totalItems'] if @object.is_a?(Hash) && @object['likes'].is_a?(Hash)
   end
 
   def reblogs_count
-    @object.dig('shares', 'totalItems')
+    @object['shares']['totalItems'] if @object.is_a?(Hash) && @object['shares'].is_a?(Hash)
   end
 
   def quote_policy
