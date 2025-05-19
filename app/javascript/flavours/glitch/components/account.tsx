@@ -10,9 +10,12 @@ import {
   unblockAccount,
   muteAccount,
   unmuteAccount,
+  followAccountSuccess,
 } from 'flavours/glitch/actions/accounts';
+import { showAlertForError } from 'flavours/glitch/actions/alerts';
 import { openModal } from 'flavours/glitch/actions/modal';
 import { initMuteModal } from 'flavours/glitch/actions/mutes';
+import { apiFollowAccount } from 'flavours/glitch/api/accounts';
 import { Avatar } from 'flavours/glitch/components/avatar';
 import { Button } from 'flavours/glitch/components/button';
 import { FollowersCounter } from 'flavours/glitch/components/counters';
@@ -23,6 +26,7 @@ import { RelativeTimestamp } from 'flavours/glitch/components/relative_timestamp
 import { ShortNumber } from 'flavours/glitch/components/short_number';
 import { Skeleton } from 'flavours/glitch/components/skeleton';
 import { VerifiedBadge } from 'flavours/glitch/components/verified_badge';
+import { me } from 'flavours/glitch/initial_state';
 import type { MenuItem } from 'flavours/glitch/models/dropdown_menu';
 import { useAppSelector, useAppDispatch } from 'flavours/glitch/store';
 
@@ -114,14 +118,43 @@ export const Account: React.FC<{
       ];
     } else if (defaultAction !== 'block') {
       const handleAddToLists = () => {
-        dispatch(
-          openModal({
-            modalType: 'LIST_ADDER',
-            modalProps: {
-              accountId: id,
-            },
-          }),
-        );
+        const openAddToListModal = () => {
+          dispatch(
+            openModal({
+              modalType: 'LIST_ADDER',
+              modalProps: {
+                accountId: id,
+              },
+            }),
+          );
+        };
+        if (relationship?.following || relationship?.requested || id === me) {
+          openAddToListModal();
+        } else {
+          dispatch(
+            openModal({
+              modalType: 'CONFIRM_FOLLOW_TO_LIST',
+              modalProps: {
+                accountId: id,
+                onConfirm: () => {
+                  apiFollowAccount(id)
+                    .then((relationship) => {
+                      dispatch(
+                        followAccountSuccess({
+                          relationship,
+                          alreadyFollowing: false,
+                        }),
+                      );
+                      openAddToListModal();
+                    })
+                    .catch((err: unknown) => {
+                      dispatch(showAlertForError(err));
+                    });
+                },
+              },
+            }),
+          );
+        }
       };
 
       arr = [
