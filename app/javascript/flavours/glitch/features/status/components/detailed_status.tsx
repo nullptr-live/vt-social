@@ -27,6 +27,7 @@ import { MentionsPlaceholder } from 'flavours/glitch/components/mentions_placeho
 import { Permalink } from 'flavours/glitch/components/permalink';
 import { PictureInPicturePlaceholder } from 'flavours/glitch/components/picture_in_picture_placeholder';
 import StatusContent from 'flavours/glitch/components/status_content';
+import { QuotedStatus } from 'flavours/glitch/components/status_quoted';
 import { VisibilityIcon } from 'flavours/glitch/components/visibility_icon';
 import { Audio } from 'flavours/glitch/features/audio';
 import scheduleIdleTask from 'flavours/glitch/features/ui/util/schedule_idle_task';
@@ -409,6 +410,10 @@ export const DetailedStatus: React.FC<{
               rewriteMentions={rewriteMentions}
               {...(statusContentProps as any)}
             />
+
+            {status.get('quote') && (
+              <QuotedStatus quote={status.get('quote')} />
+            )}
 
             {media}
             {hashtagBar}
