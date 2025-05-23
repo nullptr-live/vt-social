@@ -1480,6 +1480,10 @@ body > [data-popper-placement] {
   }
 }
 
+.status--has-quote .quote-inline {
+  display: none;
+}
+
 .status {
   padding: 10px 14px; // glitch: reduced padding
   min-height: 54px;

@@ -266,7 +266,7 @@ export const DetailedStatus: React.FC<{
       );
       mediaIcons.push('video-camera');
     }
-  } else if (status.get('card')) {
+  } else if (status.get('card') && !status.get('quote')) {
     media = (
       <Card
         sensitive={status.get('sensitive')}
@@ -356,6 +356,9 @@ export const DetailedStatus: React.FC<{
         className={classNames(
           'detailed-status',
           `detailed-status-${status.get('visibility')}`,
+          {
+            'status--has-quote': !!status.get('quote'),
+          },
         )}
         data-status-by={status.getIn(['account', 'acct'])}
       >
