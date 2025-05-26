@@ -67,7 +67,6 @@
     "fast-glob": "^3.3.2",
     "favico.js": "^0.3.10",
     "fuzzysort": "^3.0.0",
-    "glob": "^10.2.6",
     "history": "^4.10.1",
     "hoist-non-react-statics": "^3.3.2",
     "http-link-header": "^1.1.1",
