@@ -43,12 +43,19 @@ export function GlitchThemes(): Plugin {
         }
 
         // Skins
-        // TODO: handle variants such as `skin/common.scss`
         const skinFiles = glob.sync(
-          `app/javascript/skins/${flavourName}/*.scss`,
+          `app/javascript/skins/${flavourName}/*.{css,scss}`,
         );
         for (const entrypoint of skinFiles) {
           const name = `skins/${flavourName}/${path.basename(entrypoint)}`;
+          entrypoints[name] = path.resolve(userConfig.envDir, entrypoint);
+        }
+
+        const alternateSkinFiles = glob.sync(
+          `app/javascript/skins/${flavourName}/*/{index,common,application}.{css,scss}`,
+        );
+        for (const entrypoint of alternateSkinFiles) {
+          const name = `skins/${flavourName}/${path.basename(path.dirname(entrypoint))}`;
           entrypoints[name] = path.resolve(userConfig.envDir, entrypoint);
         }
       }
