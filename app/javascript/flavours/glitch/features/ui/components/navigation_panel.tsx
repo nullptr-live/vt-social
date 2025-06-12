@@ -20,7 +20,6 @@ import ExploreIcon from '@/material-icons/400-24px/explore.svg?react';
 import HomeActiveIcon from '@/material-icons/400-24px/home-fill.svg?react';
 import HomeIcon from '@/material-icons/400-24px/home.svg?react';
 import InfoIcon from '@/material-icons/400-24px/info.svg?react';
-import LogoutIcon from '@/material-icons/400-24px/logout.svg?react';
 import AdministrationIcon from '@/material-icons/400-24px/manufacturing.svg?react';
 import NotificationsActiveIcon from '@/material-icons/400-24px/notifications-fill.svg?react';
 import NotificationsIcon from '@/material-icons/400-24px/notifications.svg?react';
@@ -38,7 +37,6 @@ import {
   closeNavigation,
 } from 'flavours/glitch/actions/navigation';
 import { Account } from 'flavours/glitch/components/account';
-import { IconButton } from 'flavours/glitch/components/icon_button';
 import { IconWithBadge } from 'flavours/glitch/components/icon_with_badge';
 import { NavigationPortal } from 'flavours/glitch/components/navigation_portal';
 import { useBreakpoint } from 'flavours/glitch/features/ui/hooks/useBreakpoint';
@@ -213,13 +211,6 @@ const SearchLink: React.FC = () => {
 };
 
 const ProfileCard: React.FC = () => {
-  const intl = useIntl();
-  const dispatch = useAppDispatch();
-
-  const handleLogoutClick = useCallback(() => {
-    dispatch(openModal({ modalType: 'CONFIRM_LOG_OUT', modalProps: {} }));
-  }, [dispatch]);
-
   if (!me) {
     return null;
   }
@@ -227,12 +218,6 @@ const ProfileCard: React.FC = () => {
   return (
     <div className='navigation-bar'>
       <Account id={me} minimal size={36} />
-      <IconButton
-        icon='sign-out'
-        iconComponent={LogoutIcon}
-        title={intl.formatMessage(messages.logout)}
-        onClick={handleLogoutClick}
-      />
     </div>
   );
 };
