@@ -7719,6 +7719,9 @@ img.modal-warning {
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0 5px;
+
+    // Ensure digits maintain a consistent width
+    font-variant-numeric: tabular-nums;
   }
 
   &__time-sep,
