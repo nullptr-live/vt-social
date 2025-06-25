@@ -277,7 +277,7 @@ export default tseslint.config([
             'app/javascript/**/*.stories.tsx',
             'app/javascript/**/*.test.ts',
             'app/javascript/**/*.test.tsx',
-            '.storybook/**/*.ts',
+            '.storybook/**/*',
           ],
         },
       ],
@@ -430,7 +430,7 @@ export default tseslint.config([
     },
   },
   {
-    files: ['**/*.stories.ts', '**/*.stories.tsx', '.storybook/**/*.ts'],
+    files: ['**/*.stories.ts', '**/*.stories.tsx', '.storybook/*'],
     rules: {
       'import/no-default-export': 'off',
     },
