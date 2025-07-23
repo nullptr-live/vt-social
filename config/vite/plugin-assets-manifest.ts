@@ -29,10 +29,13 @@ export function MastodonAssetsManifest(): Plugin {
     },
     async generateBundle() {
       // Glob all assets and return an array of absolute paths.
-      const assetPaths = await glob('{fonts,icons,images}/**/*', {
-        cwd: jsRoot,
-        absolute: true,
-      });
+      const assetPaths = await glob(
+        ['flavours/*/{fonts,icons,images}/**/*', '{fonts,icons,images}/**/*'],
+        {
+          cwd: jsRoot,
+          absolute: true,
+        },
+      );
 
       const assetManifest: Record<string, AssetManifestChunk> = {};
       const excludeExts = ['', '.md'];
