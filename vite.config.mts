@@ -21,7 +21,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 import { MastodonServiceWorkerLocales } from './config/vite/plugin-sw-locales';
 import { MastodonEmojiCompressed } from './config/vite/plugin-emoji-compressed';
-import { GlitchThemes } from './config/vite/plugin-glitch-themes';
+import { GlitchThemes as MastodonThemes } from './config/vite/plugin-glitch-themes';
 import { MastodonNameLookup } from './config/vite/plugin-name-lookup';
 import { MastodonAssetsManifest } from './config/vite/plugin-assets-manifest';
 
@@ -119,7 +119,7 @@ export const config: UserConfigFnPromise = async ({ mode, command }) => {
           plugins: ['formatjs', 'transform-react-remove-prop-types'],
         },
       }),
-      GlitchThemes(),
+      MastodonThemes(),
       MastodonAssetsManifest(),
       viteStaticCopy({
         targets: [
