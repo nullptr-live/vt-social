@@ -688,7 +688,7 @@ GEM
     rails-html-sanitizer (1.6.2)
       loofah (~> 2.21)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
-    rails-i18n (8.0.1)
+    rails-i18n (8.0.2)
       i18n (>= 0.7, < 2)
       railties (>= 8.0.0, < 9)
     railties (8.0.2.1)
@@ -823,12 +823,12 @@ GEM
     securerandom (0.4.1)
     shoulda-matchers (6.5.0)
       activesupport (>= 5.2.0)
-    sidekiq (7.3.9)
-      base64
-      connection_pool (>= 2.3.0)
-      logger
-      rack (>= 2.2.4)
-      redis-client (>= 0.22.2)
+    sidekiq (8.0.7)
+      connection_pool (>= 2.5.0)
+      json (>= 2.9.0)
+      logger (>= 1.6.2)
+      rack (>= 3.1.0)
+      redis-client (>= 0.23.2)
     sidekiq-bulk (0.2.0)
       sidekiq
     sidekiq-scheduler (6.0.1)
@@ -1077,7 +1077,7 @@ DEPENDENCIES
   sanitize (~> 7.0)
   scenic (~> 1.7)
   shoulda-matchers
-  sidekiq (< 8)
+  sidekiq (< 9)
   sidekiq-bulk (~> 0.2.0)
   sidekiq-scheduler (~> 6.0)
   sidekiq-unique-jobs (> 8)
