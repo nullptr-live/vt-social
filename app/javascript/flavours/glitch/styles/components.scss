@@ -656,19 +656,12 @@ body > [data-popper-placement] {
       background: url('@/images/warning-stripes.svg') repeat-y;
       width: 5px;
       flex: 0 0 auto;
-
-      &:first-child {
-        border-start-start-radius: 4px;
-      }
-
-      &:last-child {
-        border-start-end-radius: 4px;
-      }
     }
 
     .autosuggest-input {
       flex: 1 1 auto;
-      border-bottom: 1px solid var(--background-border-color);
+      border: 1px solid var(--background-border-color);
+      border-width: 1px 0;
     }
   }
 
@@ -997,6 +990,24 @@ body > [data-popper-placement] {
         text-overflow: ellipsis;
         overflow: hidden;
       }
+    }
+  }
+
+  .status__quote {
+    margin: 0 8px;
+    max-height: 220px;
+    overflow: hidden;
+
+    // Override .status__content .status__content__text.status__content__text--visible
+    .status__content__text.status__content__text {
+      display: -webkit-box;
+    }
+
+    .status__content__text {
+      -webkit-line-clamp: 4;
+      line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
   }
 }
@@ -1633,6 +1644,7 @@ body > [data-popper-placement] {
   align-items: center;
   gap: 10px;
   overflow: hidden;
+  flex-grow: 1;
 
   .display-name {
     bdi {
@@ -1647,6 +1659,11 @@ body > [data-popper-placement] {
       text-overflow: ellipsis;
     }
   }
+}
+
+.status__quote-cancel {
+  align-self: self-start;
+  order: 5;
 }
 
 .status__info {
