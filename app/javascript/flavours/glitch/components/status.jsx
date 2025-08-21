@@ -110,6 +110,7 @@ class Status extends ImmutablePureComponent {
     onToggleCollapsed: PropTypes.func,
     onTranslate: PropTypes.func,
     onInteractionModal: PropTypes.func,
+    onQuoteCancel: PropTypes.func,
     muted: PropTypes.bool,
     hidden: PropTypes.bool,
     unread: PropTypes.bool,
@@ -727,7 +728,7 @@ class Status extends ImmutablePureComponent {
                 </Permalink>
 
 
-                {this.props.contextType === 'compose' && isQuotedPost ? (
+                {isQuotedPost && !!this.props.onQuoteCancel ? (
                   <IconButton
                     onClick={this.handleQuoteCancel}
                     className='status__quote-cancel'
