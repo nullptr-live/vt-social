@@ -223,7 +223,7 @@ class ActivityPub::NoteSerializer < ActivityPub::Serializer
   end
 
   def quote?
-    object.quote&.present?
+    object.quote&.present? && !object.quote.legacy?
   end
 
   def serializable_quote?
