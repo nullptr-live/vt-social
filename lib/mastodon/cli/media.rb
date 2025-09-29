@@ -244,7 +244,7 @@ module Mastodon::CLI
         unless dry_run?
           media_attachment.reset_file!
           media_attachment.reset_thumbnail!
-          media_attachment.save
+          media_attachment.save!
         end
 
         media_attachment.file_file_size + (media_attachment.thumbnail_file_size || 0)
