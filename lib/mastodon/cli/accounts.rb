@@ -338,6 +338,8 @@ module Mastodon::CLI
     end
 
     option :all, type: :boolean
+    option :refetch, type: :boolean
+    option :missing_only, type: :boolean
     option :domain
     option :concurrency, type: :numeric, default: 5, aliases: [:c]
     option :verbose, type: :boolean, aliases: [:v]
@@ -355,13 +357,21 @@ module Mastodon::CLI
       if options[:domain] || options[:all]
         scope  = Account.remote
         scope  = scope.where(domain: options[:domain]) if options[:domain]
+        if options[:missing_only]
+          scope = scope.where("(COALESCE(avatar_remote_url, '') != '' AND avatar_file_name IS NULL) OR
+                               (COALESCE(header_remote_url, '') != '' AND header_file_name IS NULL)")
+        end
 
         processed, = parallelize_with_progress(scope) do |account|
           next if dry_run?
 
-          account.reset_avatar!
-          account.reset_header!
-          account.save
+          if options[:refetch]
+            ResolveAccountService.new.call(account)
+          else
+            account.reset_avatar!
+            account.reset_header!
+            account.save
+          end
         end
 
         say("Refreshed #{processed} accounts#{dry_run_mode_suffix}", :green, true)
