@@ -2,12 +2,12 @@
 
 dev_null = Logger.new(File::NULL)
 
-Rails.logger                 = dev_null
-ActiveRecord::Base.logger    = dev_null
-ActiveJob::Base.logger       = dev_null
-HttpLog.configuration.logger = dev_null if defined?(HttpLog)
-Paperclip.options[:log]      = false
-Chewy.logger                 = dev_null
+#Rails.logger                 = dev_null
+#ActiveRecord::Base.logger    = dev_null
+#ActiveJob::Base.logger       = dev_null
+#HttpLog.configuration.logger = dev_null if defined?(HttpLog)
+#Paperclip.options[:log]      = false
+#Chewy.logger                 = dev_null
 
 require 'ruby-progressbar/outputs/null'
 
