@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom';
 
 import { AccountBio } from '@/flavours/glitch/components/account_bio';
 import { DisplayName } from '@/flavours/glitch/components/display_name';
+import { AnimateEmojiProvider } from '@/flavours/glitch/components/emoji/context';
 import CheckIcon from '@/material-icons/400-24px/check.svg?react';
 import LockIcon from '@/material-icons/400-24px/lock.svg?react';
 import MoreHorizIcon from '@/material-icons/400-24px/more_horiz.svg?react';
@@ -781,8 +782,8 @@ export const AccountHeader: React.FC<{
         <MovedNote accountId={account.id} targetAccountId={account.moved} />
       )}
 
-      <div
-        className={classNames('account__header animate-parent', {
+      <AnimateEmojiProvider
+        className={classNames('account__header', {
           inactive: !!account.moved,
         })}
       >
@@ -937,7 +938,7 @@ export const AccountHeader: React.FC<{
             </div>
           )}
         </div>
-      </div>
+      </AnimateEmojiProvider>
 
       <ActionBar account={account} />
 
