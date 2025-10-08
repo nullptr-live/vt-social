@@ -4,7 +4,10 @@ import classNames from 'classnames';
 
 import type { CustomEmojiMapArg } from '@/flavours/glitch/features/emoji/types';
 import { isModernEmojiEnabled } from '@/flavours/glitch/utils/environment';
-import type { OnElementHandler } from '@/flavours/glitch/utils/html';
+import type {
+  OnAttributeHandler,
+  OnElementHandler,
+} from '@/flavours/glitch/utils/html';
 import { htmlStringToComponents } from '@/flavours/glitch/utils/html';
 import { polymorphicForwardRef } from '@/types/polymorphic';
 
@@ -16,6 +19,7 @@ interface EmojiHTMLProps {
   extraEmojis?: CustomEmojiMapArg;
   className?: string;
   onElement?: OnElementHandler;
+  onAttribute?: OnAttributeHandler;
 }
 
 export const ModernEmojiHTML = polymorphicForwardRef<'div', EmojiHTMLProps>(
@@ -26,14 +30,19 @@ export const ModernEmojiHTML = polymorphicForwardRef<'div', EmojiHTMLProps>(
       as: asProp = 'div', // Rename for syntax highlighting
       className = '',
       onElement,
+      onAttribute,
       ...props
     },
     ref,
   ) => {
     const contents = useMemo(
       () =>
-        htmlStringToComponents(htmlString, { onText: textToEmojis, onElement }),
-      [htmlString, onElement],
+        htmlStringToComponents(htmlString, {
+          onText: textToEmojis,
+          onElement,
+          onAttribute,
+        }),
+      [htmlString, onAttribute, onElement],
     );
 
     return (
@@ -60,6 +69,7 @@ export const LegacyEmojiHTML = polymorphicForwardRef<'div', EmojiHTMLProps>(
       extraEmojis,
       className,
       onElement,
+      onAttribute,
       ...rest
     } = props;
     const Wrapper = asElement ?? 'div';
