@@ -9239,6 +9239,10 @@ noscript {
   position: relative;
   overflow: hidden;
 
+  .layout-multiple-columns & {
+    width: 100%;
+  }
+
   @media screen and (max-width: (124px + 300px)) {
     width: 100%;
   }
