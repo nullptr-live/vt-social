@@ -213,6 +213,7 @@ function continueThread (state, status) {
     map.set('focusDate', new Date());
     map.set('caretPosition', null);
     map.set('preselectDate', new Date());
+    map.set('quoted_status_id', null);
   });
 }
 
@@ -424,7 +425,9 @@ export const composeReducer = (state = initialState, action) => {
           return 'private';
         }
         return visibility;
-      });
+      }).update('advanced_options',
+        map => map.merge(new ImmutableMap({ do_not_federate: !!status.get('local_only') })),
+      );
   } else if (quoteComposeCancel.match(action)) {
     return state.set('quoted_status_id', null);
   } else if (setComposeQuotePolicy.match(action)) {
