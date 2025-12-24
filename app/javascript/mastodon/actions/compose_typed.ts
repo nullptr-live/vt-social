@@ -179,6 +179,7 @@ export const quoteComposeByStatus = createAppThunk(
       dispatch(showAlert({ message: messages.quoteErrorPrivateMention }));
     } else if (composeState.get('poll')) {
       dispatch(showAlert({ message: messages.quoteErrorPoll }));
+    /*
     } else if (
       composeState.get('is_uploading') ||
       (mediaAttachments &&
@@ -188,6 +189,7 @@ export const quoteComposeByStatus = createAppThunk(
         mediaAttachments.size !== 0)
     ) {
       dispatch(showAlert({ message: messages.quoteErrorUpload }));
+    */
     } else if (composeState.get('quoted_status_id')) {
       dispatch(showAlert({ message: messages.quoteErrorQuote }));
     } else if (
